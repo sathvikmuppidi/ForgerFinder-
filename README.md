@@ -46,28 +46,37 @@ certificate_checker/
    Run this in the terminal:
    ```bash
    pip install -r requirements.txt
-Extract and Compare PDF Metadata
+
 
 2.Extract and Compare PDF Metadata
-python scripts/metadata_checker.py
+
+    python scripts/metadata_checker.py
 Extract Text from Suspicious PDF
 
 3.Extract Text from Suspicious PDF
-python scripts/text_extractor.py
-Compare Textual Content
+    ```bash 
+    
+    python scripts/text_extractor.py
+
 
 4.Compare Textual Content
-python scripts/textual_diff_analyzer.py
+            
+    python scripts/textual_diff_analyzer.py
+
+    
 Run Image Layout Matching
 (You must convert PDFs to images before this step.)
 
 5.Run Image Layout Matching
 (You must convert PDFs to images before this step.)
-python scripts/layout_matcher.py
+   
+   
+    python scripts/layout_matcher.py
 Detect Image Differences
 
 6.Detect Image Differences
-python scripts/image_diff_detector.py
+
+    python scripts/image_diff_detector.py
 
 
 💡 Suggestions
