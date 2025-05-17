@@ -1,24 +1,25 @@
-import fitz  # PyMuPDF
-from datetime import datetime
+from PyPDF2 import PdfReader
 
-def analyze_metadata(pdf_path):
-    doc = fitz.open(pdf_path)
-    metadata = doc.metadata
-    issues = []
+def get_pdf_metadata(pdf_path):
+    """Extract metadata dictionary from PDF file."""
+    reader = PdfReader(pdf_path)
+    return reader.metadata
 
-    creation = metadata.get("creationDate", "")
-    mod = metadata.get("modDate", "")
+def print_metadata_report(metadata):
+    """Nicely print the metadata content."""
+    print("=== PDF Metadata Overview ===")
+    for key, val in metadata.items():
+        print(f"{key}: {val}")
 
-    if creation and mod:
-        try:
-            c_time = datetime.strptime(creation[2:16], "%Y%m%d%H%M%S")
-            m_time = datetime.strptime(mod[2:16], "%Y%m%d%H%M%S")
-            if m_time > c_time:
-                issues.append("⚠️ Modification date is later than creation date.")
-        except Exception as e:
-            issues.append(f"⚠️ Could not parse metadata time: {e}")
+def check_for_suspicious_metadata(metadata):
+    """Flag suspicious or missing metadata fields."""
+    required_fields = ['/CreationDate', '/ModDate', '/Author']
+    for field in required_fields:
+        if field not in metadata or metadata[field] is None:
+            print(f"Warning: Missing important metadata field {field}")
 
-    if not metadata.get("author"):
-        issues.append("⚠️ Missing author field.")
-
-    return metadata, issues
+if __name__ == "__main__":
+    file_path = '../data/suspicious/fake_certificate.pdf'
+    meta = get_pdf_metadata(file_path)
+    print_metadata_report(meta)
+    check_for_suspicious_metadata(meta)
