@@ -7,36 +7,7 @@ This project is a lightweight prototype to detect tampered or fake PDF certifica
 
 ---
 
-## 📁 Project Structure
 
-certificate_checker/
-│
-├── data/
-│ ├── originals/
-│ │ ├── legit_certificate.pdf
-│ │ ├── legit_certificate_page1.jpg
-│ │ └── legit_text.txt
-│ └── suspicious/
-│ ├── fake_certificate.pdf
-│ ├── images/
-│ │ └── page_1.jpg
-│ ├── fake_text.txt
-│ └── diff_page1.jpg
-│
-├── scripts/
-│ ├── metadata_checker.py
-│ ├── layout_matcher.py
-│ ├── image_diff_detector.py
-│ ├── text_extractor.py
-│ └── textual_diff_analyzer.py
-│
-├── utils/
-│ ├── file_ops.py
-│ ├── img_processing.py
-│ └── pdf_helpers.py
-│
-├── requirements.txt
-└── README.md
 
 
 
